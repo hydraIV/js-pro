@@ -9,8 +9,8 @@ const renderProduct = (tumbnail, title, price) => {
     return `<div class="product-item">
                 <img src="${tumbnail}"></img>
                 <h3>${title}</h3>
-                <p>${price}</p>
-                <button class="buy-btn">Купить</button>
+                <p>${price}&nbsp;$</p>
+                <div class="buy-btn">Купить</div>
             </div>`
 };
 
