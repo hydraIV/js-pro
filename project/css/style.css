@@ -1,11 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap&subset=cyrillic');
-html {
+body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
 }
+header {
+    display: flex;
+    background-color: #04303E;
+}
+.header-wrap {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem 1rem;
+}
 .products {
-    padding: 1rem 7rem;
+    margin: 1rem 7rem;
     display: flex;
     justify-content: space-between;
   }
@@ -39,6 +48,16 @@ html {
     text-transform: uppercase;
     font-weight: 100;
 }
-.buy-btn:hover {
+.btn-cart {
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    background-color: #CAE4DB;
+    border-radius: 0.2rem;
+    text-align: center;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    font-weight: 100;
+}
+.buy-btn:hover, .btn-cart:hover {
     background-color: #F7D538;
 }
