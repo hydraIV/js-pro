@@ -14,7 +14,7 @@ const renderProduct = (tumbnail, title, price) =>
     </div>`;
 
 const renderPage = list => {
-    const productsList = list.map(item => renderProduct(item.tumbnail, item.title, item.price)).join(''); 
+    const productsList = list.map(item => renderProduct(item.tumbnail, item.title, item.price = 100)).join(''); 
     // map возвращает массив товаров, а нужен обычный HTML. Необходимо "склеить" все элементы массива в строку
     // В renderProduct убрал фигурный скобки, т.к. она сразу возвращает результат
     // Значение по умолчанию можно передать, присвоив одному из аргументов это значение в конце (item.price = 100), но здесь это не нужно
