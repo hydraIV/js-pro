@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap&subset=cyrillic');
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #04303E;
+}
+.header-wrap {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 6rem;
+}
+.products {
+    padding: 1rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+.product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0.5%;
+    min-width: 24%;
+    box-sizing: border-box;
+    transition: all 0.3s;
+}
+.product-item:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transform: scale(1.02, 1.02);
+}
+.product-item img {
+    width: 14rem;
+    min-height: 14rem;
+    padding: 1rem 1rem 0 1rem;
+    object-fit: contain;
+}
+.product-item p {
+    font-size: 2rem;
+    font-weight: 700;
+}
+.product-item h3 {
+    font-size: 3rem;
+    font-weight: 100;
+    margin-bottom: 0px;
+}
+.buy-btn {
+    cursor: pointer;
+    width: 100%;
+    padding: 0.6rem 0;
+    background-color: #CAE4DB;
+    text-align: center;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    font-weight: 100;
+}
+.btn-cart {
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    background-color: #CAE4DB;
+    text-align: center;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    font-weight: 100;
+}
+.buy-btn:hover, .btn-cart:hover {
+    background-color: #F7D538;
+}
