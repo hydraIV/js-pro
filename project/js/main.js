@@ -1,24 +1,80 @@
-const products = [
-    {id: 1, title: 'Notebook', price: 2000, tumbnail: 'https://items.s1.citilink.ru/484768_v04_b.jpg'},
-    {id: 2, title: 'Mouse', price: 30, tumbnail: 'https://items.s1.citilink.ru/339095_v01_b.jpg'},
-    {id: 3, title: 'Keyboard', price: 55, tumbnail: 'https://items.s1.citilink.ru/339097_v01_b.jpg'},
-    {id: 4, title: 'Gamepad', price: 75, tumbnail: 'https://items.s1.citilink.ru/396400_v01_b.jpg'},
-];
+class ProductsList {
+    constructor(container = '.products'){
+        this.container = container;
+        this.data = [];
+        this.allProducts = [];
+        this.init();
+    }
+    init(){
+        this._fetchProducts();
+        this._render();
+    }
+    _fetchProducts(){
+        this.data = [
+            {id: 1, title: 'Notebook', price: 2000},
+            {id: 2, title: 'Mouse', price: 30},
+            {id: 3, title: 'Keyboard', price: 55},
+            {id: 4, title: 'Gamepad', price: 65},
+        ];
+    }
+    _render(){
+        const block = document.querySelector(this.container);
+        for (let item of this.data){
+            const product = new ProductItem(item);
+            this.allProducts.push(product);
+            block.insertAdjacentHTML('beforeend', product.render());
+        }
+    }
+}
 
-const renderProduct = (tumbnail, title, price) =>
-    `<div class="product-item">
-        <img src="${tumbnail}"></img>
-        <h3>${title}</h3>
-        <p>${price}&nbsp;$</p>
-        <div class="buy-btn">Купить</div>
-    </div>`;
+class ProductItem {
+    constructor(product, img = `https://picsum.photos/200/300?grayscale`){
+        this.id = product.id;
+        this.title = product.title;
+        this.price = product.price;
+        this.img = img;
+    }
+    render(){
+        return `<div class="product-item">
+                 <img src="${this.img}" alt="${this.title}">
+                     <h3>${this.title}</h3>
+                     <p>${this.price}&nbsp;$</p>
+                     <div class="buy-btn">Купить</div>
+             </div>`
+    }
+}
+class Cart {
+    constructor(){
+        // this.some это свойство с чем-то
+        // some(){} // что делает метод
+    }
+}
 
-const renderPage = list => {
-    const productsList = list.map(item => renderProduct(item.tumbnail, item.title, item.price = 100)).join(''); 
-    // map возвращает массив товаров, а нужен обычный HTML. Необходимо "склеить" все элементы массива в строку
-    // В renderProduct убрал фигурный скобки, т.к. она сразу возвращает результат
-    // Значение по умолчанию можно передать, присвоив одному из аргументов это значение в конце (item.price = 100), но здесь это не нужно
-    document.querySelector('.products').innerHTML = productsList;
-};
+const products = new ProductsList();
 
-renderPage(products);
+// const products = [
+//     {id: 1, title: 'Notebook', price: 2000},
+//     {id: 2, title: 'Mouse', price: 30},
+//     {id: 3, title: 'Keyboard', price: 55},
+//     {id: 4, title: 'Gamepad', price: 65},
+// ];
+//
+// const renderProduct = (title, price, img = `https://placehold.it/200x150`) => {
+//     return `<div class="product-item">
+//                  <img src="${img}" alt="${title}">
+//                  <div class="desc">
+//                      <h3>${title}</h3>
+//                      <p>${price}</p>
+//                      <button class="buy-btn">Купить</button>
+//                  </div>
+//              </div>`
+// };
+//
+// const renderPage = list => {
+//     // document.querySelector('.products').innerHTML = list.map(item => renderProduct(item.title, item.price)).join('');
+//     for (let product of list){
+//         document.querySelector('.products').insertAdjacentHTML('beforeend', renderProduct(product.title, product.price));
+//     }
+// };
+//
+// renderPage(products);
