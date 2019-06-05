@@ -8,6 +8,7 @@ class ProductsList {
     init(){
         this._fetchProducts();
         this._render();
+        console.log(`Итого: ${this.countTotal()}`);
     }
     _fetchProducts(){
         this.data = [
@@ -24,6 +25,19 @@ class ProductsList {
             this.allProducts.push(product);
             block.insertAdjacentHTML('beforeend', product.render());
         }
+    }
+    _collectPrices(productGroup){
+        let prices = [];
+        productGroup.forEach(function (item){
+            prices.push(item.price);
+        });
+        return prices;
+    }
+    countTotal(){
+        let total = this._collectPrices(this.data).reduce(function (sum, current) {
+            return sum + current;
+        });
+        return total;
     }
 }
 
@@ -45,8 +59,11 @@ class ProductItem {
 }
 class Cart {
     constructor(){
-        // this.some это свойство с чем-то
-        // some(){} // что делает метод
+        this.cartProducts = [];
+        this.pushToCart();
+    }
+    pushToCart(item){
+        this.cartProducts.push(item);
     }
 }
 
