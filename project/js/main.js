@@ -26,20 +26,22 @@ class ProductsList {
             block.insertAdjacentHTML('beforeend', product.render());
         }
     }
-    _collectPrices(productGroup){
-        let prices = [];
-        productGroup.forEach(function (item){
-            prices.push(item.price);
+    _collectPrices(productGroup){ // эта функция создает массив цен группы продуктов, аргументов передаем эту группу
+        let prices = []; //создаем массив для хранения всех цен
+        productGroup.forEach(function (item){ // для каждого item из productGroup
+            prices.push(item.price); // добавляем цену каждого товара в новый масив
         });
-        return prices;
+        return prices; // вернули массив prices
     }
-    countTotal(){
-        let total = this._collectPrices(this.data).reduce(function (sum, current) {
-            return sum + current;
+    countTotal(){ // считаем сумму всех цен (элементов массива prices[])
+        let total = this._collectPrices(this.data).reduce(function (sum, current) { 
+            return sum + current; // с помощью reduce к каждому новому значению sum добавляем текущее значение массива
         });
-        return total;
+        return total; // возвращаем сумму, вывод в консоль в init()
     }
 }
+
+// скорее всего перебрать цены товаров можно без отдельной функции, но я не знаю как это сделать
 
 class ProductItem {
     constructor(product, img = `https://picsum.photos/200/300?grayscale`){
@@ -59,11 +61,11 @@ class ProductItem {
 }
 class Cart {
     constructor(){
-        this.cartProducts = [];
-        this.pushToCart();
+        this.cartProducts = []; // Массив товаров в корзине
+        this.pushToCart(); // Метод для добавления товара в корзину
     }
     pushToCart(item){
-        this.cartProducts.push(item);
+        this.cartProducts.push(item); // Функция pushToCart принимает в качестве аргумента товар (item) и пушит его в массив cartProducts
     }
 }
 
