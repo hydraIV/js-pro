@@ -72,8 +72,19 @@ class ProductItem {
 }
 class Cart {
     constructor(){
-        // this.some это свойство с чем-то
-        // some(){} // что делает метод
+        this.cartProducts = [];
+        this.pushToCart();
+        this.deleteFromCart();
+        this.clearCart();
+    }
+    pushToCart(item){
+        this.cartProducts.push(item); // Добавление товара в корзину
+    }
+    deleteFromCart(item){
+        this.cartProducts.splice(item.id,1); // Удаление товара из корзины
+    }
+    clearCart(){
+        this.cartProducts.length = 0; // Очистка корзины
     }
 }
 
