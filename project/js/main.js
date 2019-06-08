@@ -26,18 +26,12 @@ class ProductsList {
             block.insertAdjacentHTML('beforeend', product.render());
         }
     }
-    _collectPrices(productGroup){ // эта функция создает массив цен группы продуктов, аргументов передаем эту группу
-        let prices = []; //создаем массив для хранения всех цен
-        productGroup.forEach(function (item){ // для каждого item из productGroup
-            prices.push(item.price); // добавляем цену каждого товара в новый масив
-        });
-        return prices; // вернули массив prices
-    }
-    countTotal(){ // считаем сумму всех цен (элементов массива prices[])
-        let total = this._collectPrices(this.data).reduce(function (sum, current) { 
-            return sum + current; // с помощью reduce к каждому новому значению sum добавляем текущее значение массива
-        });
-        return total; // возвращаем сумму, вывод в консоль в init()
+    countTotal(){ 
+        let total = 0;
+        for (let item of this.allProducts){
+            total += item.price;
+        }
+        return total;
     }
 }
 
