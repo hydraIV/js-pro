@@ -35,8 +35,6 @@ class ProductsList {
     }
 }
 
-// скорее всего перебрать цены товаров можно без отдельной функции, но я не знаю как это сделать
-
 class ProductItem {
     constructor(product, img = `https://picsum.photos/200/300?grayscale`){
         this.id = product.id;
@@ -55,11 +53,19 @@ class ProductItem {
 }
 class Cart {
     constructor(){
-        this.cartProducts = []; // Массив товаров в корзине
-        this.pushToCart(); // Метод для добавления товара в корзину
+        this.cartProducts = [];
+        this.pushToCart();
+        this.deleteFromCart();
+        this.clearCart();
     }
     pushToCart(item){
-        this.cartProducts.push(item); // Функция pushToCart принимает в качестве аргумента товар (item) и пушит его в массив cartProducts
+        this.cartProducts.push(item); // Добавление товара в корзину
+    }
+    deleteFromCart(item){
+        this.cartProducts.splice(item.id,1); // Удаление товара из корзины
+    }
+    clearCart(){
+        this.cartProducts.length = 0; // Очистка корзины
     }
 }
 
