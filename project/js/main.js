@@ -87,6 +87,15 @@ class Cart {
         this.cartProducts.length = 0; // Очистка корзины
     }
 }
+class CartProduct {
+    constructor(product, img = `https://placehold.it/200x150`){
+        this.id_product = product.id_product;
+        this.product_name = product.product_name;
+        this.price = product.price;
+        this.quantity = product.quantity;
+        this.img = img;  
+    }
+}
 
 const products = new ProductsList();
 // console.log(products.calcSum());
