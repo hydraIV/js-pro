@@ -87,42 +87,11 @@ class Cart {
         this.cartProducts.length = 0; // Очистка корзины
     }
 }
-class CartProduct {
-    constructor(product, img = `https://placehold.it/200x150`){
-        this.id_product = product.id_product;
-        this.product_name = product.product_name;
-        this.price = product.price;
-        this.quantity = product.quantity;
-        this.img = img;  
-    }
-}
-
+class CartProduct extends ProductItem {
+    constructor(){
+        super();
+        this.quantity; // создаю дочерний класс CartProduct и хочу добавить новый параметр "колличество".
+    }                  // Правильно ли я понимаю, если я далее создам new CartProduct(), то в новом объекте будут
+}                      // все свойства и методы родителя + quantity?
+    
 const products = new ProductsList();
-// console.log(products.calcSum());
-
-// const products = [
-//     {id: 1, title: 'Notebook', price: 2000},
-//     {id: 2, title: 'Mouse', price: 30},
-//     {id: 3, title: 'Keyboard', price: 55},
-//     {id: 4, title: 'Gamepad', price: 65},
-// ];
-//
-// const renderProduct = (title, price, img = `https://placehold.it/200x150`) => {
-//     return `<div class="product-item">
-//                  <img src="${img}" alt="${title}">
-//                  <div class="desc">
-//                      <h3>${title}</h3>
-//                      <p>${price}</p>
-//                      <button class="buy-btn">Купить</button>
-//                  </div>
-//              </div>`
-// };
-//
-// const renderPage = list => {
-//     // document.querySelector('.products').innerHTML = list.map(item => renderProduct(item.title, item.price)).join('');
-//     for (let product of list){
-//         document.querySelector('.products').insertAdjacentHTML('beforeend', renderProduct(product.title, product.price));
-//     }
-// };
-//
-// renderPage(products);
