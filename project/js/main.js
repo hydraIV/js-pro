@@ -61,12 +61,10 @@ class ProductItem {
     }
     render(){
         return `<div class="product-item">
-                 <img src="${this.img}" alt="${this.product_name}">
-                 <div class="desc">
-                     <h3>${this.product_name}</h3>
-                     <p>${this.price}</p>
-                     <button class="buy-btn">Купить</button>
-                 </div>
+                <img src="${this.img}" alt="${this.product_name}">
+                <h3>${this.product_name}</h3>
+                <p>${this.price}</p>
+                <div class="buy-btn">Купить</div>
              </div>`
     }
 }
