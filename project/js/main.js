@@ -71,9 +71,6 @@ class ProductItem {
 class Cart {
     constructor(){
         this.cartProducts = [];
-        this.pushToCart();
-        this.deleteFromCart();
-        this.clearCart();
     }
     pushToCart(item){
         this.cartProducts.push(item); // Добавление товара в корзину
@@ -84,12 +81,31 @@ class Cart {
     clearCart(){
         this.cartProducts.length = 0; // Очистка корзины
     }
-}
+    _renderCart(){
+        const cartBlock = document.querySelector('.cart'); // render корзины. Добавляем товары из массива cartProduct в блок .cart
+        for (let item of this.cartProducts){
+            cartBlock.innerHTML = ''; // очищаем содержимое корзины и перерисовываем заново
+            cartBlock.insertAdjacentHTML('beforeend', cartProduct.renderCartProduct());
+        }
+    }
+    }
 class CartProduct extends ProductItem {
     constructor(){
         super();
-        this.quantity; // создаю дочерний класс CartProduct и хочу добавить новый параметр "колличество".
-    }                  // Правильно ли я понимаю, если я далее создам new CartProduct(), то в новом объекте будут
-}                      // все свойства и методы родителя + quantity?
+        this.quantity;
+        // создаю дочерний класс CartProduct и хочу добавить новый параметр "колличество".
+        // Правильно ли я понимаю, если я далее создам new CartProduct(), то в новом объекте будут
+        // все свойства и методы родителя + quantity?
+    }
+    renderCartProduct(){ // render товара корзины
+        return `<div class="cart-product-item">
+                <img src="${this.img}" alt="${this.product_name}">
+                <h3>${this.product_name}</h3>
+                <p>${this.price}</p>
+                <input type="number"></input>
+                <div class="delete-btn">Удалить</div>
+             </div>`
+    }                  
+}                      
     
 const products = new ProductsList();
