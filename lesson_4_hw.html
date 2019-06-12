@@ -16,11 +16,9 @@
     }
     
     let str = "Lorem ipsum dolor sit amet, 'consectetur' adipiscing aren't elit. Quisque sodales mi neque, 'a dictum mi' placerat at.";
-    let regexp = /'/gm;
+    let regexp = /((\B\')|(\'\B))/gm;
 
     console.log(blockquoteReplace(str, regexp, '"'));
-
-    
 
 </script>
 </body>
