@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    // Замена одинарных кавычек на двойные
+
+    let blockquoteReplace = (str, regexp, char) => {
+        let newStr = str.replace(regexp, char);
+        return newStr;
+    }
+    
+    let str = "Lorem ipsum dolor sit amet, 'consectetur' adipiscing aren't elit. Quisque sodales mi neque, 'a dictum mi' placerat at.";
+    let regexp = /'/gm;
+
+    console.log(blockquoteReplace(str, regexp, '"'));
+
+    
+
+</script>
+</body>
+</html>
