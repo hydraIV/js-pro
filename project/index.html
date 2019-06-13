@@ -21,7 +21,7 @@
                 <div class="cartProducts">
                     <div class="cart-item" v-for="product of cartProducts" :key="product.id_product">
                         <div class="product-bio">
-                            <img :src="imgCatalog" :alt="product.product_name">
+                            <img :src="imgCart" :alt="product.product_name">
                             <div class="product-desc">
                                 <p class="product-title">{{product.product_name}}</p>
                                 <p class="product-quantity">Quantity: {{product.quantity}}</p>

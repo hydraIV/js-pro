@@ -7,7 +7,8 @@ const app = new Vue({
         cartUrl: `/getBasket.json`,
         products: [],
         cartProducts: [],
-        imgCatalog: `https://placehold.it/200x150`
+        imgCatalog: `https://placehold.it/200x150`,
+        imgCart: `https://placehold.it/100x100`
     },
     methods: {
         getJson(url){
@@ -16,12 +17,12 @@ const app = new Vue({
                 .catch(error => console.log(error))
         },
         addProduct(product){
-            if(this.cartProducts.includes(product)){
-                product.quantity++
+            if(product.id_product === this.cartProducts[product.id_product].id_product){
+                product.quantity++;
+                console.log(this.cartProducts);
             }else{
                 this.cartProducts.push(product);
             }
-            
         },
         deleteProduct(product){
 
@@ -31,23 +32,20 @@ const app = new Vue({
         this.getJson(`${API + this.catalogUrl}`)
             .then(data => {
                 for(let el of data){
-                    el.quantity=0;
                     this.products.push(el);
                 }
             });
         this.getJson(`getProducts.json`)
             .then(data => {
                 for(let el of data){
-                    el.quantity=0;
                     this.products.push(el);
                 }
             });
         this.getJson(`${API + this.cartUrl}`)
-            .then(data = [...data])
             .then(data => {
-                for(let el of data){
+                for(let el of data.contents){
                     this.cartProducts.push(el);
-                }
+                } console.log(this.cartProducts);
             });
     }
 })
