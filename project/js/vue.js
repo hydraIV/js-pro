@@ -17,17 +17,36 @@ const app = new Vue({
                 .catch(error => console.log(error))
         },
         addProduct(product){
-            for(let item of this.cartProducts){
-                if(item.id_product === product.id_product) {
-                    product.quantity++;
+            this.getJson(`${API}/addToBasket.json`)
+            .then(data => {
+                if(data.result){
+                    let find = this.cartProducts.find(el => el.id_product === product.id_product);
+                    if(find){
+                       find.quantity++;
+                    } else {
+                        let prod = Object.assign({quantity: 1}, product);
+                        this.cartProducts.push(prod);
+                    }
                 } else {
-                    console.log('PUSH');
-                    this.cartProducts.push(product);
+                    console.log('Error');
                 }
-            }
+            })     
         },
-        deleteProduct(product){
-
+        deleteProduct(element){
+            this.getJson(`${API}/deleteFromBasket.json`)
+            .then(data => {
+                if (data.result) {
+                    let prodId = +element.id_product;
+                    let find = this.cartProducts.find(el => el.id_product === prodId);
+                    if (find.quantity > 1) {
+                        find.quantity--;
+                    } else {
+                        this.cartProducts.splice(this.cartProducts.indexOf(find), 1);
+                    }
+                } else {
+                    console.log('Error');
+                }
+            })
         }
     },
     mounted(){
