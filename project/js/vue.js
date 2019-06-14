@@ -8,9 +8,12 @@ const app = new Vue({
         products: [],
         cartProducts: [],
         imgCatalog: `https://placehold.it/200x150`,
-        imgCart: `https://placehold.it/100x100`
+        imgCart: `https://placehold.it/100x100`,
     },
     methods: {
+        toggleCart(){
+            
+        },
         getJson(url){
             return fetch(url)
                 .then(result => result.json())
