@@ -18,7 +18,7 @@
                 </button>
             </form>
             <button @click="invisible = !invisible" class="btn-cart" type="button">Корзина</button>
-                <div v-show="invisible" class="cartProducts">
+                <div v-show="!invisible" class="cartProducts">
                     <div class="cart-item" v-for="product of cartProducts" :key="product.id_product">
                         <div class="product-bio">
                             <img :src="imgCart" :alt="product.product_name">
