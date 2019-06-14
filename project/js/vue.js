@@ -17,11 +17,13 @@ const app = new Vue({
                 .catch(error => console.log(error))
         },
         addProduct(product){
-            if(product.id_product === this.cartProducts[product.id_product].id_product){
-                product.quantity++;
-                console.log(this.cartProducts);
-            }else{
-                this.cartProducts.push(product);
+            for(let item of this.cartProducts){
+                if(item.id_product === product.id_product) {
+                    product.quantity++;
+                } else {
+                    console.log('PUSH');
+                    this.cartProducts.push(product);
+                }
             }
         },
         deleteProduct(product){
@@ -45,7 +47,7 @@ const app = new Vue({
             .then(data => {
                 for(let el of data.contents){
                     this.cartProducts.push(el);
-                } console.log(this.cartProducts);
+                }
             });
     }
 })
