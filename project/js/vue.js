@@ -57,6 +57,9 @@ const app = new Vue({
                     console.log('Error');
                 }
             })
+            if(cartProducts.length <= 0){
+                this.noGoods = 'Cart is empty';
+            }
         }
     },
     mounted(){
