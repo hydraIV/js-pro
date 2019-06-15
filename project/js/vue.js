@@ -10,8 +10,14 @@ const app = new Vue({
         imgCatalog: `https://placehold.it/200x150`,
         imgCart: `https://placehold.it/100x100`,
         isVisible: true,
+        searchLine: ``,
     },
     methods: {
+        FilterGoods(){
+            products.forEach(element => {
+                
+            });
+        },
         toggleCart(){
             this.isVisible = !this.isVisible;
         },
