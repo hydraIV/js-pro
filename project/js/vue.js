@@ -9,10 +9,11 @@ const app = new Vue({
         cartProducts: [],
         imgCatalog: `https://placehold.it/200x150`,
         imgCart: `https://placehold.it/100x100`,
+        isVisible: true,
     },
     methods: {
         toggleCart(){
-            
+            this.isVisible = !this.isVisible;
         },
         getJson(url){
             return fetch(url)
