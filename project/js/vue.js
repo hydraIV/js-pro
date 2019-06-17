@@ -7,16 +7,16 @@ const app = new Vue({
         cartUrl: `/getBasket.json`,
         products: [],
         cartProducts: [],
+        filtered: [],
         imgCatalog: `https://placehold.it/200x150`,
         imgCart: `https://placehold.it/100x100`,
         isVisible: true,
         searchLine: ``,
     },
     methods: {
-        FilterGoods(){
-            products.forEach(element => {
-                
-            });
+        filter(){
+            let regexp = new RegExp(this.searchLine, 'i');
+            this.filtered = this.products.filter(el => regexp.test(el.product_name));
         },
         toggleCart(){
             this.isVisible = !this.isVisible;
@@ -57,9 +57,6 @@ const app = new Vue({
                     console.log('Error');
                 }
             })
-            if(cartProducts.length <= 0){
-                this.noGoods = 'Cart is empty';
-            }
         }
     },
     mounted(){
@@ -67,12 +64,14 @@ const app = new Vue({
             .then(data => {
                 for(let el of data){
                     this.products.push(el);
+                    this.filtered.push(el);
                 }
             });
         this.getJson(`getProducts.json`)
             .then(data => {
                 for(let el of data){
                     this.products.push(el);
+                    this.filtered.push(el);
                 }
             });
         this.getJson(`${API + this.cartUrl}`)

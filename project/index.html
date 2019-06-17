@@ -11,14 +11,15 @@
     <header>
         <div class="logo">E-shop</div>
         <div class="cart">
-            <form action="#" method="post" class="search-form">
+            <form @submit.prevent="filter" action="#" method="post" class="search-form">
                 <input v-model="searchLine" type="text" class="search-field">
-                <button @click="FilterGoods" class="btn-search" type="submit">
+                <button class="btn-search" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
             <button @click="toggleCart" class="btn-cart" type="button">Корзина</button>
                 <div :class="{ invisible: isVisible }" class="cartProducts">
+                    <p v-if="!cartProducts.length">Cart is empty</p>
                     <div class="cart-item" v-for="product of cartProducts" :key="product.id_product">
                         <div class="product-bio">
                             <img :src="imgCart" :alt="product.product_name">
@@ -38,7 +39,7 @@
     </header>
     <main>
         <div class="products">
-            <div class="product-item" v-for="product of products" :key="product.id_product">
+            <div class="product-item" v-for="product of filtered" :key="product.id_product">
                 <img :src="imgCatalog" :alt="product.product_name">
                 <div class="desc">
                     <h3>{{product.product_name}}</h3>
