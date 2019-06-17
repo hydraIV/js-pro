@@ -11,12 +11,7 @@
     <header>
         <div class="logo">E-shop</div>
         <div class="cart">
-            <form @submit.prevent="filter" action="#" method="post" class="search-form">
-                <input v-model="searchLine" type="text" class="search-field">
-                <button class="btn-search" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
+            <search-component></search-component>  
             <button @click="toggleCart" class="btn-cart" type="button">Корзина</button>
                 <div :class="{ invisible: isVisible }" class="cartProducts">
                     <p v-if="!cartProducts.length">Cart is empty</p>
@@ -52,6 +47,7 @@
 </div>
 <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script defer src="js/vue.js"></script>
+<script defer src="js/main.js"></script>
+<script defer src="js/components.js"></script>
 </body>
 </html>
