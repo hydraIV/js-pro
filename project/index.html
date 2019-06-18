@@ -11,25 +11,8 @@
     <header>
         <div class="logo">E-shop</div>
         <div class="cart">
-            <search-component></search-component>  
-            <button @click="toggleCart" class="btn-cart" type="button">Корзина</button>
-                <div :class="{ invisible: isVisible }" class="cartProducts">
-                    <p v-if="!cartProducts.length">Cart is empty</p>
-                    <div class="cart-item" v-for="product of cartProducts" :key="product.id_product">
-                        <div class="product-bio">
-                            <img :src="imgCart" :alt="product.product_name">
-                            <div class="product-desc">
-                                <p class="product-title">{{product.product_name}}</p>
-                                <p class="product-quantity">Quantity: {{product.quantity}}</p>
-                                <p class="product-single-price">{{product.price}} each</p>
-                            </div>
-                        </div>
-                        <div class="right-block">
-                            <p class="product-price">{{product.quantity*product.price}}</p>
-                            <button class="del-btn" @click="deleteProduct(product)">&times;</button>
-                        </div>
-                    </div>
-                </div>
+            <search-component></search-component>
+            <cart-component></cart-component>
         </div>
     </header>
     <main>

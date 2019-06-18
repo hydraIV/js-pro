@@ -6,11 +6,8 @@ const app = new Vue({
         catalogUrl: `/catalogData.json`,
         cartUrl: `/getBasket.json`,
         products: [],
-        cartProducts: [],
         filtered: [],
         imgCatalog: `https://placehold.it/200x150`,
-        imgCart: `https://placehold.it/100x100`,
-        isVisible: true,
     },
     methods: {   
         toggleCart(){
