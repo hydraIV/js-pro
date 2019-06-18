@@ -67,9 +67,10 @@ img {
     padding: 15px
 }
 .cart{
+    display: flex;
     position: relative;
 }
-.cartProducts{
+.cart-block{
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.62);
     border-radius: 5px;
     box-sizing: border-box;
@@ -79,13 +80,13 @@ img {
     background-color: white;
     padding: 20px;
     color: black;
-    min-width: 300px;
+    width: 300px;
 }
 
 .invisible{
     display: none;
 }
-.cartProducts:before{
+.cart-block:before{
     content: '';
     width: 0;
     height: 0;
