@@ -32,6 +32,7 @@ const app = new Vue({
 //
 // getRequest(url).then(data => console.log(data));
 
+
 // class List {
 //     constructor(url, container){
 //         this.container = container;
@@ -213,6 +214,8 @@ const app = new Vue({
 //
 // products.getJson(`getProducts.json`).then(data => products.handleData(data));
 // console.log(products.calcSum());
+
+
 
 // const products = [
 //     {id: 1, title: 'Notebook', price: 2000},
